@@ -299,7 +299,7 @@ def handle_create_password():
 
 
 
-@app.route('/landingPage', methods=['GET'])
+@app.route('/', methods=['GET'])
 def landing_page():
     return render_template("landingPage.html")
 
