@@ -886,6 +886,39 @@ let globalTimerInterval = null;
             });
     };
 
+    function deleteChildAccount() {
+    const selectedChildID = document.getElementById('deleteChildAccountSelect').value;
+    if (!selectedChildID) {
+        alert('Please select a child account to delete.');
+        return;
+    }
+
+    if (confirm('Are you sure you want to delete this child account? This action cannot be undone.')) {
+        fetch('/delete_child_account', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ childID: selectedChildID })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                alert('Child account deleted successfully.');
+                window.location.reload();  // Reloads the page to refresh the list
+            } else {
+                alert('Failed to delete child account: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while deleting the child account.');
+        });
+    }
+}
+
+
+
     // ----------------------------
     // Alert Dismissal
     // ----------------------------

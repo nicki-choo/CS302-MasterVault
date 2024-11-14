@@ -35,17 +35,40 @@
             <!-- Feedback Messages -->
             <div id="twoStepFeedback" class="text-muted mt-2"></div>
 
-            <li class="mb-4 d-flex justify-content-between align-items-center">
-                <span>Add Family Account</span>
-                <div>
-                    <button type="button" class="btn btn-secondary btn-sm" onclick="showFamilyAccountInput()">ADD</button>
-                </div>
-            </li>
-            <li id="familyAccountInput" class="mb-4" style="display: none;">
-                <label for="familyEmail" class="visually-hidden">Enter family member's email</label>
-                <input type="email" id="familyEmail" class="form-control mb-2" placeholder="Enter family member's email" aria-label="Enter family member's email">
-                <button id="addFamilyAccountBtn" class="btn btn-primary" onclick="addFamilyAccount()">Send Request</button>
-            </li>
+           {% if not is_child_account %}
+               <!-- Add Family Account Option -->
+               <li class="mb-4 d-flex justify-content-between align-items-center">
+                   <span>Add Family Account</span>
+                   <div>
+                       <button type="button" class="btn btn-secondary btn-sm" onclick="showFamilyAccountInput()">ADD</button>
+                   </div>
+               </li>
+
+               <!-- Hidden input for adding family account -->
+               <li id="familyAccountInput" class="mb-4" style="display: none;">
+                   <label for="familyEmail" class="visually-hidden">Enter family member's email</label>
+                   <input type="email" id="familyEmail" class="form-control mb-2" placeholder="Enter family member's email" aria-label="Enter family member's email">
+                   <button id="addFamilyAccountBtn" class="btn btn-primary" onclick="addFamilyAccount()">Send Request</button>
+               </li>
+
+               <!-- Delete Family Account Option -->
+               <li class="mb-4 d-flex justify-content-between align-items-center">
+                   <label for="deleteChildAccountSelect" class="form-label">Delete Family Account</label>
+                   <div class="input-group mb-2" style="max-width: 300px;">
+                       <select id="deleteChildAccountSelect" name="deleteChildAccountSelect" class="form-select form-select-sm" style="padding: 0.25rem 0.75rem; font-size: 0.875rem;">
+                           <option selected disabled>Select Child Account</option>
+                           {% for account in family_accounts %}
+                               <option value="{{ account[0] }}">{{ account[1] }} (Family Member)</option>
+                           {% endfor %}
+                       </select>
+                   </div>
+                   <div>
+                       <button type="button" class="btn btn-danger btn-sm" onclick="deleteChildAccount()">DELETE</button>
+                   </div>
+               </li>
+           {% endif %}
+
+
         </ul>
     </div>
 
