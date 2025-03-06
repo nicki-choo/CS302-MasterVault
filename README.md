@@ -15,7 +15,7 @@ MasterVault is a Flask-based password management application designed for secure
   
 - **Account Locking**: Temporarily lock accounts for a specified duration.
   
-- **Encryption**: Sensitive data is encrypted using AES-256 for secure storage.
+- **Encryption**: Sensitive data is encrypted using 256-AES for secure storage.
   
 - **Email Notifications**: Sends emails for account verification, 2FA PINs, failed login alerts, and family management updates.
   
@@ -78,7 +78,7 @@ MasterVault is a Flask-based password management application designed for secure
 
 
 ## Security Features
-* **Encryption:** All sensitive data is encrypted using AES-256 encryption.
+* **Encryption:** All sensitive data is encrypted using 256-AES encryption.
 
 * **Master Password:** Provides an additional layer of security by requiring a master password to access all saved passwords.
   
