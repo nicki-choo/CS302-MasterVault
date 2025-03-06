@@ -6,7 +6,7 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 
 
-client = MongoClient('mongodb+srv://Conor:M0ng0DB1@mastervaultdb1.g1a7o98.mongodb.net/')
+client = MongoClient('mongodb+srv://Conor:M0ng0DB1@mastervaultdb1.lf6e7.mongodb.net/')
 db = client.MasterVault
 userData = db["userData"]
 
